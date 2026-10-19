@@ -1,0 +1,439 @@
+{
+  "name": "TECHDEX",
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "pt-BR",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "pt-BR",
+    "tables": [
+      {
+        "name": "DimCategoria",
+        "columns": [
+          { "name": "CategoriaID", "dataType": "int64", "sourceColumn": "CategoriaID" },
+          { "name": "Nome", "dataType": "string", "sourceColumn": "Nome" },
+          { "name": "Descricao", "dataType": "string", "sourceColumn": "Descricao" },
+          { "name": "Cor", "dataType": "string", "sourceColumn": "Cor" },
+          { "name": "Icone", "dataType": "string", "sourceColumn": "Icone" },
+          { "name": "Ordem", "dataType": "int64", "sourceColumn": "Ordem" }
+        ],
+        "partitions": [
+          {
+            "name": "DimCategoria-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\categorias.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\", {{\"CategoriaID\", Int64.Type}, {\"Nome\", type text}, {\"Descricao\", type text}, {\"Cor\", type text}, {\"Icone\", type text}, {\"Ordem\", Int64.Type}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimFabricante",
+        "columns": [
+          { "name": "FabricanteID", "dataType": "int64", "sourceColumn": "FabricanteID" },
+          { "name": "Nome", "dataType": "string", "sourceColumn": "Nome" },
+          { "name": "PaisSede", "dataType": "string", "sourceColumn": "PaisSede" },
+          { "name": "SiteOficial", "dataType": "string", "sourceColumn": "SiteOficial", "dataCategory": "WebURL" }
+        ],
+        "partitions": [
+          {
+            "name": "DimFabricante-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\fabricantes.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\", {{\"FabricanteID\", Int64.Type}, {\"Nome\", type text}, {\"PaisSede\", type text}, {\"SiteOficial\", type text}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimDispositivo",
+        "columns": [
+          { "name": "DeviceID", "dataType": "string", "sourceColumn": "DeviceID" },
+          { "name": "Nome", "dataType": "string", "sourceColumn": "Nome" },
+          { "name": "Modelo", "dataType": "string", "sourceColumn": "Modelo" },
+          { "name": "FabricanteID", "dataType": "int64", "sourceColumn": "FabricanteID" },
+          { "name": "CategoriaID", "dataType": "int64", "sourceColumn": "CategoriaID" },
+          { "name": "Subcategoria", "dataType": "string", "sourceColumn": "Subcategoria" },
+          { "name": "Familia", "dataType": "string", "sourceColumn": "Familia" },
+          { "name": "DescricaoCurta", "dataType": "string", "sourceColumn": "DescricaoCurta" },
+          { "name": "DescricaoTecnica", "dataType": "string", "sourceColumn": "DescricaoTecnica" },
+          { "name": "ImagemURL", "dataType": "string", "sourceColumn": "ImagemURL", "dataCategory": "ImageUrl" },
+          { "name": "DatasheetURL", "dataType": "string", "sourceColumn": "DatasheetURL", "dataCategory": "WebURL" },
+          { "name": "DocumentacaoURL", "dataType": "string", "sourceColumn": "DocumentacaoURL", "dataCategory": "WebURL" },
+          { "name": "StatusCicloVida", "dataType": "string", "sourceColumn": "StatusCicloVida" },
+          { "name": "DataUltimaValidacao", "dataType": "string", "sourceColumn": "DataUltimaValidacao" }
+        ],
+        "partitions": [
+          {
+            "name": "DimDispositivo-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\dispositivos.csv\"), [Delimiter=\",\", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\", {{\"DeviceID\", type text}, {\"Nome\", type text}, {\"Modelo\", type text}, {\"FabricanteID\", Int64.Type}, {\"CategoriaID\", Int64.Type}, {\"Subcategoria\", type text}, {\"Familia\", type text}, {\"DescricaoCurta\", type text}, {\"DescricaoTecnica\", type text}, {\"ImagemURL\", type text}, {\"DatasheetURL\", type text}, {\"DocumentacaoURL\", type text}, {\"StatusCicloVida\", type text}, {\"DataUltimaValidacao\", type text}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimAtributo",
+        "columns": [
+          { "name": "AtributoID", "dataType": "int64", "sourceColumn": "AtributoID" },
+          { "name": "Nome", "dataType": "string", "sourceColumn": "Nome" },
+          { "name": "Grupo", "dataType": "string", "sourceColumn": "Grupo" },
+          { "name": "TipoDado", "dataType": "string", "sourceColumn": "TipoDado" },
+          { "name": "UnidadePadrao", "dataType": "string", "sourceColumn": "UnidadePadrao" },
+          { "name": "OrdemExibicao", "dataType": "int64", "sourceColumn": "OrdemExibicao" },
+          { "name": "DirecaoComparacao", "dataType": "string", "sourceColumn": "DirecaoComparacao" },
+          { "name": "DefinicaoTecnica", "dataType": "string", "sourceColumn": "DefinicaoTecnica" }
+        ],
+        "partitions": [
+          {
+            "name": "DimAtributo-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\atributos.csv\"), [Delimiter=\",\", Columns=8, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\", {{\"AtributoID\", Int64.Type}, {\"Nome\", type text}, {\"Grupo\", type text}, {\"TipoDado\", type text}, {\"UnidadePadrao\", type text}, {\"OrdemExibicao\", Int64.Type}, {\"DirecaoComparacao\", type text}, {\"DefinicaoTecnica\", type text}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "FatoEspecificacao",
+        "columns": [
+          { "name": "DeviceID", "dataType": "string", "sourceColumn": "DeviceID" },
+          { "name": "AtributoID", "dataType": "int64", "sourceColumn": "AtributoID" },
+          { "name": "ValorNumerico", "dataType": "double", "sourceColumn": "ValorNumerico" },
+          { "name": "ValorTexto", "dataType": "string", "sourceColumn": "ValorTexto" },
+          { "name": "CondicaoDeMedicao", "dataType": "string", "sourceColumn": "CondicaoDeMedicao" },
+          { "name": "StatusValidacao", "dataType": "string", "sourceColumn": "StatusValidacao" }
+        ],
+        "partitions": [
+          {
+            "name": "FatoEspecificacao-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\especificacoes.csv\"), [Delimiter=\",\", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\", {{\"DeviceID\", type text}, {\"AtributoID\", Int64.Type}, {\"ValorNumerico\", type number}, {\"ValorTexto\", type text}, {\"CondicaoDeMedicao\", type text}, {\"StatusValidacao\", type text}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DimProtocolo",
+        "columns": [
+          { "name": "ProtocoloID", "dataType": "int64", "sourceColumn": "ProtocoloID" },
+          { "name": "Nome", "dataType": "string", "sourceColumn": "Nome" },
+          { "name": "Categoria", "dataType": "string", "sourceColumn": "Categoria" },
+          { "name": "Descricao", "dataType": "string", "sourceColumn": "Descricao" }
+        ],
+        "partitions": [
+          {
+            "name": "DimProtocolo-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\protocolos.csv\"), [Delimiter=\",\", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\", {{\"ProtocoloID\", Int64.Type}, {\"Nome\", type text}, {\"Categoria\", type text}, {\"Descricao\", type text}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "PonteDispositivoProtocolo",
+        "columns": [
+          { "name": "DeviceID", "dataType": "string", "sourceColumn": "DeviceID" },
+          { "name": "ProtocoloID", "dataType": "int64", "sourceColumn": "ProtocoloID" },
+          { "name": "ModalidadeSuporte", "dataType": "string", "sourceColumn": "ModalidadeSuporte" }
+        ],
+        "partitions": [
+          {
+            "name": "PonteDispositivoProtocolo-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\ponte_dispositivo_protocolo.csv\"), [Delimiter=\",\", Columns=3, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\", {{\"DeviceID\", type text}, {\"ProtocoloID\", Int64.Type}, {\"ModalidadeSuporte\", type text}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Compatibilidade",
+        "columns": [
+          { "name": "CenarioID", "dataType": "int64", "sourceColumn": "CenarioID" },
+          { "name": "ControladorID", "dataType": "string", "sourceColumn": "ControladorID" },
+          { "name": "PerifericoID", "dataType": "string", "sourceColumn": "PerifericoID" },
+          { "name": "Interface", "dataType": "string", "sourceColumn": "Interface" },
+          { "name": "StatusCompatibilidade", "dataType": "string", "sourceColumn": "StatusCompatibilidade" },
+          { "name": "NivelLogicoControlador", "dataType": "string", "sourceColumn": "NivelLogicoControlador" },
+          { "name": "NivelLogicoPeriferico", "dataType": "string", "sourceColumn": "NivelLogicoPeriferico" },
+          { "name": "NecessitaConversorNivel", "dataType": "string", "sourceColumn": "NecessitaConversorNivel" },
+          { "name": "RequisitosAlimentacao", "dataType": "string", "sourceColumn": "RequisitosAlimentacao" },
+          { "name": "AlertasTecnicos", "dataType": "string", "sourceColumn": "AlertasTecnicos" }
+        ],
+        "partitions": [
+          {
+            "name": "Compatibilidade-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\compatibilidade.csv\"), [Delimiter=\",\", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Tipo Alterado\" = Table.TransformColumnTypes(#\"Cabeçalhos Promovidos\", {{\"CenarioID\", Int64.Type}, {\"ControladorID\", type text}, {\"PerifericoID\", type text}, {\"Interface\", type text}, {\"StatusCompatibilidade\", type text}, {\"NivelLogicoControlador\", type text}, {\"NivelLogicoPeriferico\", type text}, {\"NecessitaConversorNivel\", type text}, {\"RequisitosAlimentacao\", type text}, {\"AlertasTecnicos\", type text}})",
+                "in",
+                "    #\"Tipo Alterado\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DispositivoComparacaoA",
+        "columns": [
+          { "name": "DeviceID_A", "dataType": "string", "sourceColumn": "DeviceID" },
+          { "name": "Nome_A", "dataType": "string", "sourceColumn": "Nome" },
+          { "name": "Categoria_A", "dataType": "string", "sourceColumn": "Categoria" }
+        ],
+        "partitions": [
+          {
+            "name": "DispositivoComparacaoA-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\dispositivos.csv\"), [Delimiter=\",\", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Colunas Selecionadas\" = Table.SelectColumns(#\"Cabeçalhos Promovidos\", {\"DeviceID\", \"Nome\", \"Subcategoria\"}),",
+                "    #\"Colunas Renomeadas\" = Table.RenameColumns(#\"Colunas Selecionadas\", {{\"DeviceID\", \"DeviceID_A\"}, {\"Nome\", \"Nome_A\"}, {\"Subcategoria\", \"Categoria_A\"}})",
+                "in",
+                "    #\"Colunas Renomeadas\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "DispositivoComparacaoB",
+        "columns": [
+          { "name": "DeviceID_B", "dataType": "string", "sourceColumn": "DeviceID" },
+          { "name": "Nome_B", "dataType": "string", "sourceColumn": "Nome" },
+          { "name": "Categoria_B", "dataType": "string", "sourceColumn": "Categoria" }
+        ],
+        "partitions": [
+          {
+            "name": "DispositivoComparacaoB-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Fonte = Csv.Document(File.Contents(\"C:\\Users\\lucas\\.gemini\\antigravity\\scratch\\TECHDEX\\data\\dispositivos.csv\"), [Delimiter=\",\", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.None]),",
+                "    #\"Cabeçalhos Promovidos\" = Table.PromoteHeaders(Fonte, [PromoteAllScalars=true]),",
+                "    #\"Colunas Selecionadas\" = Table.SelectColumns(#\"Cabeçalhos Promovidos\", {\"DeviceID\", \"Nome\", \"Subcategoria\"}),",
+                "    #\"Colunas Renomeadas\" = Table.RenameColumns(#\"Colunas Selecionadas\", {{\"DeviceID\", \"DeviceID_B\"}, {\"Nome\", \"Nome_B\"}, {\"Subcategoria\", \"Categoria_B\"}})",
+                "in",
+                "    #\"Colunas Renomeadas\""
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "_Medidas",
+        "columns": [
+          { "name": "ChaveAuxiliar", "dataType": "int64", "isHidden": true, "sourceColumn": "ChaveAuxiliar" }
+        ],
+        "partitions": [
+          {
+            "name": "_Medidas-Partition",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": "let Fonte = #table(type table [ChaveAuxiliar = Int64.Type], {{1}}) in Fonte"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "TotalDispositivos",
+            "expression": "DISTINCTCOUNT(DimDispositivo[DeviceID])",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "TotalFabricantes",
+            "expression": "DISTINCTCOUNT(DimFabricante[FabricanteID])",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "TotalCategorias",
+            "expression": "DISTINCTCOUNT(DimCategoria[CategoriaID])",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "TotalProtocolos",
+            "expression": "DISTINCTCOUNT(DimProtocolo[ProtocoloID])",
+            "formatString": "#,##0"
+          },
+          {
+            "name": "DispositivoSelecionadoNome",
+            "expression": "SELECTEDVALUE(DimDispositivo[Nome], \"Selecione um Dispositivo no Catálogo\")"
+          },
+          {
+            "name": "DispositivoSelecionadoID",
+            "expression": "SELECTEDVALUE(DimDispositivo[DeviceID], \"-\")"
+          },
+          {
+            "name": "DispositivoSelecionadoImagem",
+            "expression": "SELECTEDVALUE(DimDispositivo[ImagemURL], \"\")"
+          },
+          {
+            "name": "DispositivoSelecionadoDatasheet",
+            "expression": "SELECTEDVALUE(DimDispositivo[DatasheetURL], \"\")"
+          },
+          {
+            "name": "Comparacao_DispositivoA_Nome",
+            "expression": "SELECTEDVALUE(DispositivoComparacaoA[Nome_A], \"Selecione Dispositivo A\")"
+          },
+          {
+            "name": "Comparacao_DispositivoB_Nome",
+            "expression": "SELECTEDVALUE(DispositivoComparacaoB[Nome_B], \"Selecione Dispositivo B\")"
+          },
+          {
+            "name": "Comparacao_ValorA",
+            "expression": [
+              "VAR devA = SELECTEDVALUE(DispositivoComparacaoA[DeviceID_A])",
+              "RETURN",
+              "IF(ISBLANK(devA), \"-\",",
+              "    CALCULATE(",
+              "        IF(MAX(FatoEspecificacao[ValorTexto]) <> \"\", MAX(FatoEspecificacao[ValorTexto]), FORMAT(MAX(FatoEspecificacao[ValorNumerico]), \"General Number\")),",
+              "        FILTER(ALL(FatoEspecificacao), FatoEspecificacao[DeviceID] = devA && FatoEspecificacao[AtributoID] = MAX(DimAtributo[AtributoID]))",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "Comparacao_ValorB",
+            "expression": [
+              "VAR devB = SELECTEDVALUE(DispositivoComparacaoB[DeviceID_B])",
+              "RETURN",
+              "IF(ISBLANK(devB), \"-\",",
+              "    CALCULATE(",
+              "        IF(MAX(FatoEspecificacao[ValorTexto]) <> \"\", MAX(FatoEspecificacao[ValorTexto]), FORMAT(MAX(FatoEspecificacao[ValorNumerico]), \"General Number\")),",
+              "        FILTER(ALL(FatoEspecificacao), FatoEspecificacao[DeviceID] = devB && FatoEspecificacao[AtributoID] = MAX(DimAtributo[AtributoID]))",
+              "    )",
+              ")"
+            ]
+          },
+          {
+            "name": "PctDocumentacaoValidada",
+            "expression": [
+              "VAR Total = COUNTROWS(DimDispositivo)",
+              "VAR Validados = CALCULATE(COUNTROWS(DimDispositivo), DimDispositivo[StatusCicloVida] = \"Ativo\")",
+              "RETURN DIVIDE(Validados, Total, 0)"
+            ],
+            "formatString": "0.0%"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Rel_Dispositivo_Fabricante",
+        "fromTable": "DimDispositivo",
+        "fromColumn": "FabricanteID",
+        "toTable": "DimFabricante",
+        "toColumn": "FabricanteID"
+      },
+      {
+        "name": "Rel_Dispositivo_Categoria",
+        "fromTable": "DimDispositivo",
+        "fromColumn": "CategoriaID",
+        "toTable": "DimCategoria",
+        "toColumn": "CategoriaID"
+      },
+      {
+        "name": "Rel_FatoEspecificacao_Dispositivo",
+        "fromTable": "FatoEspecificacao",
+        "fromColumn": "DeviceID",
+        "toTable": "DimDispositivo",
+        "toColumn": "DeviceID"
+      },
+      {
+        "name": "Rel_FatoEspecificacao_Atributo",
+        "fromTable": "FatoEspecificacao",
+        "fromColumn": "AtributoID",
+        "toTable": "DimAtributo",
+        "toColumn": "AtributoID"
+      },
+      {
+        "name": "Rel_PonteProto_Dispositivo",
+        "fromTable": "PonteDispositivoProtocolo",
+        "fromColumn": "DeviceID",
+        "toTable": "DimDispositivo",
+        "toColumn": "DeviceID"
+      },
+      {
+        "name": "Rel_PonteProto_Protocolo",
+        "fromTable": "PonteDispositivoProtocolo",
+        "fromColumn": "ProtocoloID",
+        "toTable": "DimProtocolo",
+        "toColumn": "ProtocoloID"
+      }
+    ]
+  }
+}

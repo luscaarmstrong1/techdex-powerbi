@@ -1,0 +1,20 @@
+﻿ProtocoloID,Nome,Categoria,Descricao
+1,Wi-Fi 4 (802.11 b/g/n),Sem Fio,Rede sem fio 2.4 GHz de até 150 Mbps para IoT.
+2,Wi-Fi 6 (802.11 ax),Sem Fio,Wi-Fi de alta eficiência em 2.4 GHz com OFDMA e Target Wake Time (TWT).
+3,Bluetooth Clássico (BR/EDR),Sem Fio,Conexão sem fio contínua para áudio e transferência serial de dados.
+4,Bluetooth Low Energy (BLE),Sem Fio,"Comunicação sem fio ultrabaixa potência, beacons e topologia Mesh."
+5,LoRa (CSS),Sem Fio,Chirp Spread Spectrum em frequências sub-GHz (433/868/915 MHz).
+6,LoRaWAN,Rede IoT,Protocolo MAC de rede pública ou privada sobre modulação LoRa.
+7,Zigbee (802.15.4),Rede Mesh,Rede mesh autocurável para automação predial e residencial.
+8,Thread (IPv6 Mesh),Rede Mesh,"Rede mesh IPv6 segura sem ponto único de falha, base do padrão Matter."
+9,UART / USART,Serial Cabeada,Comunicação serial assíncrona full-duplex por dois condutores (TX/RX).
+10,SPI,Síncrono Cabeado,Serial Peripheral Interface síncrono mestre-escravo full-duplex de 4 vias.
+11,I2C,Síncrono Cabeado,Barramento mestre-escravo bidirecional de 2 fios com endereçamento de 7 ou 10 bits.
+12,CAN 2.0B,Automotivo/Industrial,Controller Area Network diferencial imune a ruídos e com arbitragem determinística.
+13,CAN FD,Automotivo/Industrial,CAN com taxa de dados flexível até 5 Mbps e cargas úteis de até 64 bytes.
+14,RS-485,Industrial Diferencial,Transmissão diferencial multiponto half-duplex para distâncias de até 1200 metros.
+15,Ethernet 10/100/1000,Rede Cabeada,Rede cabeada padrão IEEE 802.3 com conexão RJ45.
+16,Celular 2G / GSM / GPRS,Celular,Rede celular por comutação de circuitos e pacotes para telemetria M2M legada.
+17,Celular 4G LTE / NB-IoT,Celular,Rede celular moderna dedicada à IoT de longa penetração e consumo reduzido.
+18,1-Wire,Serial Cabeada,Protocolo de barramento de condutor único com alimentação parasitária.
+19,USB 2.0 (Host/OTG),Serial Cabeada,Barramento serial diferencial para periféricos e programação DFU/CDC.

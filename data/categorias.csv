@@ -1,0 +1,9 @@
+﻿CategoriaID,Nome,Descricao,Cor,Icone,Ordem
+1,Microcontroladores e SoCs,"Chips e SoCs com CPUs, memórias e periféricos integrados de silício.",#00D9FF,Cpu,1
+2,Placas de Desenvolvimento,"Placas de prototipagem com reguladores LDO/Buck, conectores e interface USB.",#397BFF,CircuitBoard,2
+3,Sensores,"Transdutores ambientais, inerciais, químicos, acústicos e elétricos.",#21E6A0,Activity,3
+4,LoRa e Radiofrequência,"Transceptores RF, modems LoRa sub-GHz e rádios proprietários.",#9D6BFF,Radio,4
+5,Comunicação e Conectividade,"Módulos celulares (GSM/LTE/NB-IoT), GNSS/GPS e barramentos industriais.",#FFAD47,Wifi,5
+6,Computadores Embarcados,Single Board Computers (SBCs) multiprocessados para Linux/RTOS.,#FF4D6D,Server,6
+7,Eletrônica de Potência e Interfaces,"Drivers de motores, pontes H, conversores DC-DC e optoisoladores.",#FFC837,Zap,7
+8,Atuadores e Periféricos,"Displays digitais, servomotores, motores de passo, relés e armazenamento.",#00F5D4,Sliders,8

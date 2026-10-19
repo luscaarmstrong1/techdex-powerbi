@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/reportVersion/1.0.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "TechDexFuturisticDark",
+      "version": "1.0",
+      "type": "Custom"
+    }
+  },
+  "objects": {
+    "outspace": [
+      {
+        "properties": {
+          "color": {
+            "solid": {
+              "color": "#080D18"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

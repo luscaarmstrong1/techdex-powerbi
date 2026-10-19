@@ -1,0 +1,21 @@
+# Arquivos temporários e de cache do Power BI
+*.tmp
+*.log
+*.zip
+AutoRecovery/
+AnalysisServicesWorkspaces/
+TempSaves/
+
+# Arquivos do sistema operacional
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# Ambientes Python e caches
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+env/

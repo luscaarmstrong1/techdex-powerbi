@@ -1,0 +1,16 @@
+﻿AtributoID,Nome,Grupo,TipoDado,UnidadePadrao,OrdemExibicao,DirecaoComparacao,DefinicaoTecnica
+1,Arquitetura,Processamento,Texto,-,1,Nenhum,Conjunto de instruções da CPU (ISA).
+2,Núcleos de CPU,Processamento,Numérico,núcleos,2,MaiorMelhor,Quantidade de núcleos físicos de execução.
+3,Frequência Máxima de Clock,Processamento,Numérico,MHz,3,MaiorMelhor,Frequência máxima nominal de operação.
+4,Memória RAM,Memória,Numérico,KB,4,MaiorMelhor,Memória volátil interna de leitura/escrita rápida (SRAM).
+5,Memória Flash / ROM,Memória,Numérico,KB,5,MaiorMelhor,Memória não volátil integrada ou embarcada na placa.
+6,Tensão de Alimentação Mínima,Elétrica,Numérico,V,6,MenorMelhor,Menor tensão admissível para funcionamento estável.
+7,Tensão de Alimentação Máxima,Elétrica,Numérico,V,7,Nenhum,Maior tensão permitida de entrada contínua.
+8,Nível Lógico dos GPIOs,Elétrica,Numérico,V,8,Nenhum,Tensão operacional das entradas e saídas digitais.
+9,Quantidade de GPIOs Disponíveis,GPIO,Numérico,pinos,9,MaiorMelhor,Total de pinos de E/S expostos e configuráveis.
+10,Canais ADC,Analógico,Numérico,canais,10,MaiorMelhor,Quantidade de entradas de conversão analógico-digital.
+11,Resolução do ADC,Analógico,Numérico,bits,11,MaiorMelhor,Resolução máxima das leituras analógicas.
+12,Canais DAC Integrados,Analógico,Numérico,canais,12,MaiorMelhor,Canais de saída analógica real de tensão.
+13,Corrente Deep Sleep,Elétrica,Numérico,uA,13,MenorMelhor,Consumo de corrente típico no modo de repouso profundo com RTC.
+14,Temperatura Mínima,Ambiental,Numérico,°C,14,MenorMelhor,Limite inferior de temperatura operacional.
+15,Temperatura Máxima,Ambiental,Numérico,°C,15,MaiorMelhor,Limite superior de temperatura operacional.

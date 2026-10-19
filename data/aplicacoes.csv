@@ -1,0 +1,9 @@
+﻿AplicacaoID,Nome,Descricao
+1,Estações Meteorológicas e Monitoramento Ambiental,"Aferição contínua de clima, umidade, pressão atmosférica e qualidade do ar."
+2,Automação Residencial e Smart Home (Matter/Home Assistant),"Controle de iluminação, climatização, relés inteligentes e segurança."
+3,Redes de Comunicação Mesh Descentralizadas (Meshtastic),Comunicação tática e comunitária sem dependência de operadoras ou internet.
+4,Agricultura de Precisão e Fazendas Inteligentes,Sensores remotos de solo e irrigação autônoma de longo alcance via LoRaWAN.
+5,Telemetria Veicular e Rastreadores GPS/Celular,Localização de frotas com telemetria via barramento CAN e transmissão por 4G.
+6,Robótica Educacional e Sistemas Autônomos,"Veículos terrestres autônomos, braços mecânicos e esteiras industriais."
+7,Impressoras 3D e Máquinas CNC,"Controle de micropassos, aquecimento de bico, mesa e extrusão de filamento."
+8,Inteligência Artificial e Visão Computacional na Borda,"Classificação de imagens, reconhecimento facial e detecção de anomalias em tempo real."

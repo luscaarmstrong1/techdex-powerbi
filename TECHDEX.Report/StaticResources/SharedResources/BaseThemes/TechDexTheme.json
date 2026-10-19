@@ -1,0 +1,64 @@
+{
+  "name": "TechDexFuturisticDark",
+  "dataColors": [
+    "#00D9FF",
+    "#397BFF",
+    "#21E6A0",
+    "#9D6BFF",
+    "#FFAD47",
+    "#FF4D6D",
+    "#FFC837",
+    "#00F5D4"
+  ],
+  "background": "#080D18",
+  "foreground": "#F4F8FF",
+  "tableAccent": "#00D9FF",
+  "visualStyles": {
+    "*": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#17243A" } },
+            "transparency": 10
+          }
+        ],
+        "border": [
+          {
+            "show": true,
+            "color": { "solid": { "color": "#233554" } },
+            "radius": 8
+          }
+        ],
+        "title": [
+          {
+            "fontColor": { "solid": { "color": "#00D9FF" } },
+            "fontSize": 14,
+            "fontFamily": "Segoe UI Semibold"
+          }
+        ],
+        "values": [
+          {
+            "fontColor": { "solid": { "color": "#F4F8FF" } },
+            "fontFamily": "Segoe UI"
+          }
+        ]
+      }
+    },
+    "page": {
+      "*": {
+        "background": [
+          {
+            "color": { "solid": { "color": "#080D18" } },
+            "transparency": 0
+          }
+        ],
+        "outspace": [
+          {
+            "color": { "solid": { "color": "#080D18" } },
+            "transparency": 0
+          }
+        ]
+      }
+    }
+  }
+}
